@@ -6,14 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     [Header("Movement")]
-    public float maxSpeed = 10.0f;
-    public float gravity = -30.0f;
-    public float jumpHeight = 3.0f; 
+    public float maxSpeed = 3.0f;
+    public float gravity = -9.81f;
+
+    public float fallSpeed = -3.0f;
+    public float jumpHeight = 1.0f; 
     public Vector3 velocity;
 
     [Header("Jump")]
     public Transform groundCheck;
-    public float groundRadius = 0.5f; 
+    public float groundRadius = 0.15f; 
     public LayerMask groundMask;
     public bool isGrounded;
 
@@ -31,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
         //makes sure we are grounded at all times
         if(!isGrounded && velocity.y < 0.0f){
-            velocity.y = -9.0f;
+            velocity.y = fallSpeed;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -45,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider hit){
+        if(hit.gameObject.tag == "Killers"){
+            Debug.Log("reset player now");
+        }
     }
 
     private void OnDrawGizmos() {
