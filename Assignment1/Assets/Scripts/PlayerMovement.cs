@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider hit){
         if(hit.gameObject.tag == "Killers"){
             Debug.Log("reset player now");
+            string sceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(sceneName);
         }
     }
 
