@@ -890,6 +890,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7768767408052953419, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768767408052953428, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -149
+      objectReference: {fileID: 0}
     - target: {fileID: 7768767408052953429, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -913,6 +921,10 @@ PrefabInstance:
     - target: {fileID: 7768767408052953429, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MainMenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768767408334625526, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7768767408334625527, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -949,6 +961,10 @@ PrefabInstance:
     - target: {fileID: 7768767409237786678, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768767410135026943, guid: d8b176b5f886a304d9170e366046d9dd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 329
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
