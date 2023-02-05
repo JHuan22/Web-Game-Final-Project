@@ -5,7 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool playerMovement = true;
     public CharacterController controller;
+
+    [Header("Effects")]
+    public AudioSource Jump;
+    public AudioSource Hurt;
+    public AudioSource ItemPickup;
+
     [Header("Movement")]
     public float maxSpeed = 3.0f;
     public float gravity = -9.81f;
@@ -40,9 +47,13 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 move = transform.right * x + transform.forward * y; 
-        controller.Move(move * maxSpeed * Time.deltaTime);
+        if(playerMovement == true){
+            controller.Move(move * maxSpeed * Time.deltaTime);
+        }
+        
 
         if(Input.GetButton("Jump") && isGrounded){
+            Jump.Play();
             velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
         }
 
@@ -52,10 +63,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider hit){
         if(hit.gameObject.tag == "Killers"){
-            Debug.Log("reset player now");
-            string sceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(sceneName);
+            playerMovement = false;
+            Hurt.Play();
+            Invoke("ResetScene", Hurt.clip.length);
         }
+
+        if(hit.gameObject.tag == "Speed"){
+            ItemPickup.Play();
+        }
+    }
+
+    void ResetScene()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadSceneAsync(sceneName);
     }
 
     private void OnDrawGizmos() {
