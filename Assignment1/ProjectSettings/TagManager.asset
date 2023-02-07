@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Killers
   - Speed
+  - Win
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: top
+    uniqueID: 209907027
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

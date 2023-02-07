@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Canvas winCanvas;
     public bool playerMovement = true;
     public CharacterController controller;
 
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        winCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+
+
+
     private void OnTriggerEnter(Collider hit){
         if(hit.gameObject.tag == "Killers"){
             playerMovement = false;
@@ -71,6 +76,13 @@ public class PlayerMovement : MonoBehaviour
         if(hit.gameObject.tag == "Speed"){
             ItemPickup.Play();
         }
+
+        if(hit.gameObject.tag == "Win"){
+            Debug.Log("you win");
+            winCanvas.gameObject.SetActive(true);
+        }
+
+        
     }
 
     void ResetScene()
