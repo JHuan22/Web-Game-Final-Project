@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private int itemsToCollect = 2;
     private int itemsCollected = 0;
 
+    public int health = 3;
+    public float invulnerabilityDuration = 3f;
+    private bool isInvulnerable = false;
+    private float invulnerabilityTimer = 0f;
+
     public Canvas winCanvas;
     public bool playerMovement = true;
     public CharacterController controller;
@@ -36,11 +41,25 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         winCanvas.gameObject.SetActive(false);
+        health = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isInvulnerable)
+        {
+            invulnerabilityTimer -= Time.deltaTime;
+            if (invulnerabilityTimer <= 0f)
+            {
+                isInvulnerable = false;
+            }
+        }
+
+        if(health == 0){
+            ResetScene();
+        }
+
         if(itemsCollected == itemsToCollect){
             Debug.Log("YOU WINNN");
         }
@@ -73,10 +92,14 @@ public class PlayerMovement : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider hit){
-        if(hit.gameObject.tag == "Killers"){
-            playerMovement = false;
+        if(hit.gameObject.tag == "Killers" && !isInvulnerable){
+            //playerMovement = false;
             Hurt.Play();
-            Invoke("ResetScene", Hurt.clip.length);
+            health--;
+            isInvulnerable = true;
+            invulnerabilityTimer = invulnerabilityDuration;
+            Debug.Log(health);
+            //Invoke("ResetScene", Hurt.clip.length);
         }
 
         if(hit.gameObject.tag == "Speed" || hit.gameObject.tag == "Jump"){
@@ -85,7 +108,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(hit.gameObject.tag == "Win"){
             Debug.Log("you win");
-            winCanvas.gameObject.SetActive(true);
+            health = 3;
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex + 1);
         }
         if(hit.gameObject.tag == "winCollect"){
             itemsCollected++;
