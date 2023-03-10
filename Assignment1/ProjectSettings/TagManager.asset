@@ -7,6 +7,8 @@ TagManager:
   - Killers
   - Speed
   - Win
+  - Jump
+  - winCollect
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - obstacles
   - 
   - 
   - 

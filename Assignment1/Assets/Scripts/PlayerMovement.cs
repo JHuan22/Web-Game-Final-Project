@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private int itemsToCollect = 2;
+    private int itemsCollected = 0;
+
     public Canvas winCanvas;
     public bool playerMovement = true;
     public CharacterController controller;
@@ -38,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(itemsCollected == itemsToCollect){
+            Debug.Log("YOU WINNN");
+        }
         //ground check
         isGrounded = Physics.CheckSphere(groundCheck.position,groundRadius,groundMask);
 
@@ -73,13 +79,21 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetScene", Hurt.clip.length);
         }
 
-        if(hit.gameObject.tag == "Speed"){
+        if(hit.gameObject.tag == "Speed" || hit.gameObject.tag == "Jump"){
             ItemPickup.Play();
         }
 
         if(hit.gameObject.tag == "Win"){
             Debug.Log("you win");
             winCanvas.gameObject.SetActive(true);
+        }
+        if(hit.gameObject.tag == "winCollect"){
+            itemsCollected++;
+            Debug.Log("collected: " + itemsCollected);
+            MeshRenderer renderer = hit.GetComponent<MeshRenderer>();
+            SphereCollider collider = hit.GetComponent<SphereCollider>();
+            Destroy(renderer);
+            Destroy(collider);
         }
 
         
