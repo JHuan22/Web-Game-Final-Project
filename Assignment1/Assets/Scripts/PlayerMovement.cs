@@ -134,4 +134,34 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
     }
+
+    public void SaveButton_Pressed()
+    {
+        SaveSystem.SavePlayer(this.GetComponent<PlayerMovement>());
+    }
+
+    public void LoadButton_Pressed()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        if(data != null)
+        {
+            controller.enabled = false;
+
+            health = data.health;
+            Vector3 position;
+            position.x = data.position[0];
+            position.y = data.position[1];
+            position.z = data.position[2];
+
+            transform.position = position;
+
+            controller.enabled = true;
+
+        }
+        else
+        {
+            Debug.Log("No save data found");
+        }
+    }
 }

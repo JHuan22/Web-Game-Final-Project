@@ -12,6 +12,13 @@ public class MainMenuController : MonoBehaviour
     public void ShowOptions()
     {
         Debug.Log("Show Options");
+        // SaveSystem.LoadPlayer();
+    }
+
+    public void SaveButton()
+    {
+        Debug.Log("Save Button");
+        // SaveSystem.SavePlayer();
     }
 
     public void QuitGame()
