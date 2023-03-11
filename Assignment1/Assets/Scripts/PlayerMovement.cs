@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(itemsCollected == itemsToCollect){
-            Debug.Log("YOU WINNN");
+            winCanvas.gameObject.SetActive(true);
         }
         //ground check
         isGrounded = Physics.CheckSphere(groundCheck.position,groundRadius,groundMask);
