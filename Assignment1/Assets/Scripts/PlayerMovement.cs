@@ -13,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isInvulnerable = false;
     private float invulnerabilityTimer = 0f;
 
+    [Header("Controller")]
+    public Joystick joystick;
+    public float horiSens;
+    public float vertSens;
+
+
     public Canvas winCanvas;
     public bool playerMovement = true;
     public CharacterController controller;
@@ -71,25 +77,27 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = fallSpeed;
         }
 
+#if !UNITY_ANDROID
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+#elif UNITY_ANDROID
+        float x = joystick.Horizontal;
+        float y = joystick.Vertical;
+#endif
+
         Vector3 move = transform.right * x + transform.forward * y; 
         if(playerMovement == true){
             controller.Move(move * maxSpeed * Time.deltaTime);
         }
         
-
+#if !UNITY_ANDROID
         if(Input.GetButton("Jump") && isGrounded){
-            Jump.Play();
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            pJump();
         }
-
+#endif
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
-
-
 
     private void OnTriggerEnter(Collider hit){
         if(hit.gameObject.tag == "Killers" && !isInvulnerable){
@@ -123,23 +131,19 @@ public class PlayerMovement : MonoBehaviour
 
         
     }
-
     void ResetScene()
     {
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadSceneAsync(sceneName);
     }
-
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
     }
-
     public void SaveButton_Pressed()
     {
         SaveSystem.SavePlayer(this.GetComponent<PlayerMovement>());
     }
-
     public void LoadButton_Pressed()
     {
         PlayerData data = SaveSystem.LoadPlayer();
@@ -163,5 +167,18 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("No save data found");
         }
+    }
+    
+    //jump logic
+    private void pJump(){
+        Jump.Play();
+        velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+    }
+    //jump button logic, dont need GetButton
+    public void JumpButtonPressed(){
+        if(isGrounded){
+            pJump();
+        }
+
     }
 }

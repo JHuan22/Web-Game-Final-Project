@@ -19,12 +19,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #if !UNITY_ANDROID
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Pause();
+        }
+        #endif
+    }
+
+    private void Pause(){
             canvas.SetActive(!canvas.activeSelf);
             Time.timeScale = canvas.activeSelf ? 0 : 1;
             isPaused = canvas.activeSelf;
             Cursor.lockState = canvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
-        }
+    }
+
+    public void pauseButtonPressed(){
+        Pause();
     }
 }
