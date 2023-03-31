@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public float vertSens;
 
 
+    public Canvas inventoryCanvas;
+    public TMP_Text inventoryCounter;
     public Canvas winCanvas;
     public bool playerMovement = true;
     public CharacterController controller;
@@ -97,7 +100,17 @@ public class PlayerMovement : MonoBehaviour
 #endif
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+#if !UNITY_ANDROID
+    if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryCanvas.gameObject.SetActive(!inventoryCanvas.gameObject.activeSelf);
+        }
+#endif
+    inventoryCounter.text = itemsCollected.ToString();
     }
+
+
 
     private void OnTriggerEnter(Collider hit){
         if(hit.gameObject.tag == "Killers" && !isInvulnerable){
@@ -180,5 +193,9 @@ public class PlayerMovement : MonoBehaviour
             pJump();
         }
 
+    }
+
+    public void openInv(){
+        inventoryCanvas.gameObject.SetActive(!inventoryCanvas.gameObject.activeSelf);
     }
 }

@@ -490,7 +490,6 @@ UnityEngine.Input::get_mouseScrollDelta_Injected
 UnityEngine.Input::set_compositionCursorPos_Injected
 UnityEngine.Input::set_imeCompositionMode
 UnityEngine.Input::get_imeCompositionMode
-UnityEngine.Internal.InputUnsafeUtility::GetButton
 UnityEngine.Internal.InputUnsafeUtility::GetButtonDown
 UnityEngine.Internal.InputUnsafeUtility::GetAxis
 UnityEngine.Internal.InputUnsafeUtility::GetAxisRaw
@@ -678,6 +677,7 @@ UnityEngine.RenderTexture::GetTemporary_Internal_Injected
 UnityEngine.Resources::GetBuiltinResource
 UnityEngine.ResourcesAPIInternal::Load
 UnityEngine.ResourcesAPIInternal::FindShaderByName
+UnityEngine.Rigidbody::AddForce_Injected
 UnityEngine.SceneManagement.Scene::GetBuildIndexInternal
 UnityEngine.SceneManagement.Scene::GetNameInternal
 UnityEngine.SceneManagement.SceneManager::get_sceneCount
