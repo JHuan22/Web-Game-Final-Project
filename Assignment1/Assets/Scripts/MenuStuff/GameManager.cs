@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject canvas;
+    
+    
     public static bool isPaused = false;
 
     // Start is called before the first frame update
@@ -14,6 +16,8 @@ public class GameManager : MonoBehaviour
         canvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
+
+        
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour
             Pause();
         }
         #endif
+        
     }
 
     private void Pause(){
@@ -33,6 +38,10 @@ public class GameManager : MonoBehaviour
             isPaused = canvas.activeSelf;
             Cursor.lockState = canvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
     }
+
+
+
+
 
     public void pauseButtonPressed(){
         Pause();
