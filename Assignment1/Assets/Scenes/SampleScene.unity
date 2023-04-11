@@ -2112,6 +2112,8 @@ MonoBehaviour:
   joystick: {fileID: 441612102}
   horiSens: 0
   vertSens: 0
+  inventoryCanvas: {fileID: 0}
+  inventoryCounter: {fileID: 0}
   winCanvas: {fileID: 1902968540}
   playerMovement: 1
   controller: {fileID: 770856267}
@@ -3905,6 +3907,7 @@ MonoBehaviour:
   - {fileID: 707603766}
   - {fileID: 1596510775}
   - {fileID: 699871890}
+  subject: {fileID: 770856270}
 --- !u!224 &1573995581
 RectTransform:
   m_ObjectHideFlags: 0
