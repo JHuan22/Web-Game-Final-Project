@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Subject
 {
     private int itemsToCollect = 2;
     private int itemsCollected = 0;
@@ -117,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
             //playerMovement = false;
             Hurt.Play();
             health--;
+            NotifyObservers(health);
             isInvulnerable = true;
             invulnerabilityTimer = invulnerabilityDuration;
             Debug.Log(health);

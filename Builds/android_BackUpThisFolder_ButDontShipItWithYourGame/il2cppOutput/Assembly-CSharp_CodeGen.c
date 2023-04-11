@@ -113,6 +113,10 @@ extern void U3CDisappearReappearU3Ed__10_System_Collections_IEnumerator_get_Curr
 extern void PlatformDisappearOnTouch_OnCollisionEnter_m27285BEF6EBE94AAA5F2FBC6A91A5EA34ED707A8 (void);
 extern void PlatformDisappearOnTouch_Update_m4E1B3BB7005CE3115B8D1D961EE3448F4DDAB8F2 (void);
 extern void PlatformDisappearOnTouch__ctor_m292D9E992CB3E6AE073191F0C0F96CEDE85CB5D0 (void);
+extern void ObjectPool_SpawnPrefabs_mA574F4DC28A8B19CBDC18C92CA62C9A558FB892C (void);
+extern void ObjectPool_Start_mFE2BCF2FAF33C92FBEBB4BC56BA17F404DD43805 (void);
+extern void ObjectPool_GetObjectFromPool_mD6C823EC63BCB81D991EA175EBCC48C7AEF362CA (void);
+extern void ObjectPool__ctor_m71417FAC6D702860867B1C3413ED349B343ACFFD (void);
 extern void PlayerData__ctor_m9ECFEF4634E1DA19289E609AC6D7443366C4FD48 (void);
 extern void PlayerMovement_Start_m83FD44DCA324CE3D05A71FD2E2991FCD743F003A (void);
 extern void PlayerMovement_Update_m5BB6CE35AF68EE00CFEB4BA5EBA17E10667551D3 (void);
@@ -123,6 +127,7 @@ extern void PlayerMovement_SaveButton_Pressed_mC991F601F72A82ABA40E718ABE7F6ABA5
 extern void PlayerMovement_LoadButton_Pressed_m2A90B524DCC2D7D48FE02902D1DA350C020FBAEC (void);
 extern void PlayerMovement_pJump_mDAEA7DD4D6A3754D4C5A3BC97A59F04DD33352A2 (void);
 extern void PlayerMovement_JumpButtonPressed_mE890F8EF8111171E4CADCF2CD562AD932C4F9BF0 (void);
+extern void PlayerMovement_openInv_m4F376D8BE00E49AB13CBD991286D58BB2E7B1DCB (void);
 extern void PlayerMovement__ctor_mB37559C5B0638161878D20E00B7C672FC38BBBAA (void);
 extern void SaveSystem_SavePlayer_m15010FC5A8C9EF7D0E3A8206FEAA709428650837 (void);
 extern void SaveSystem_LoadPlayer_mC1444E19FA6A134D30B16916031F96A5CA71EFBF (void);
@@ -149,7 +154,7 @@ extern void U3CrevertSpeedU3Ed__6_System_Collections_IEnumerator_get_Current_m51
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_IsEditorOnly_m59E10A16B0BDEA496377805E39C3D90B1E2C4815 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_Get_mDAD527916A4779DB4ACAFEADC3BA7372671FA647 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes__ctor_mE2C680837D47039E3F06032AA8C63FEDB7E783A5 (void);
-static Il2CppMethodPointer s_methodPointers[137] = 
+static Il2CppMethodPointer s_methodPointers[142] = 
 {
 	JoystickPlayerExample_FixedUpdate_m9AEDBA111F95D67A006A5D3821956048224541B7,
 	JoystickPlayerExample__ctor_m702422E0AE29402330CF41FDDBEE76F0506342E2,
@@ -252,6 +257,10 @@ static Il2CppMethodPointer s_methodPointers[137] =
 	PlatformDisappearOnTouch_OnCollisionEnter_m27285BEF6EBE94AAA5F2FBC6A91A5EA34ED707A8,
 	PlatformDisappearOnTouch_Update_m4E1B3BB7005CE3115B8D1D961EE3448F4DDAB8F2,
 	PlatformDisappearOnTouch__ctor_m292D9E992CB3E6AE073191F0C0F96CEDE85CB5D0,
+	ObjectPool_SpawnPrefabs_mA574F4DC28A8B19CBDC18C92CA62C9A558FB892C,
+	ObjectPool_Start_mFE2BCF2FAF33C92FBEBB4BC56BA17F404DD43805,
+	ObjectPool_GetObjectFromPool_mD6C823EC63BCB81D991EA175EBCC48C7AEF362CA,
+	ObjectPool__ctor_m71417FAC6D702860867B1C3413ED349B343ACFFD,
 	PlayerData__ctor_m9ECFEF4634E1DA19289E609AC6D7443366C4FD48,
 	PlayerMovement_Start_m83FD44DCA324CE3D05A71FD2E2991FCD743F003A,
 	PlayerMovement_Update_m5BB6CE35AF68EE00CFEB4BA5EBA17E10667551D3,
@@ -262,6 +271,7 @@ static Il2CppMethodPointer s_methodPointers[137] =
 	PlayerMovement_LoadButton_Pressed_m2A90B524DCC2D7D48FE02902D1DA350C020FBAEC,
 	PlayerMovement_pJump_mDAEA7DD4D6A3754D4C5A3BC97A59F04DD33352A2,
 	PlayerMovement_JumpButtonPressed_mE890F8EF8111171E4CADCF2CD562AD932C4F9BF0,
+	PlayerMovement_openInv_m4F376D8BE00E49AB13CBD991286D58BB2E7B1DCB,
 	PlayerMovement__ctor_mB37559C5B0638161878D20E00B7C672FC38BBBAA,
 	SaveSystem_SavePlayer_m15010FC5A8C9EF7D0E3A8206FEAA709428650837,
 	SaveSystem_LoadPlayer_mC1444E19FA6A134D30B16916031F96A5CA71EFBF,
@@ -289,7 +299,7 @@ static Il2CppMethodPointer s_methodPointers[137] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_Get_mDAD527916A4779DB4ACAFEADC3BA7372671FA647,
 	UnitySourceGeneratedAssemblyMonoScriptTypes__ctor_mE2C680837D47039E3F06032AA8C63FEDB7E783A5,
 };
-static const int32_t s_InvokerIndices[137] = 
+static const int32_t s_InvokerIndices[142] = 
 {
 	4534,
 	4534,
@@ -392,29 +402,24 @@ static const int32_t s_InvokerIndices[137] =
 	3632,
 	4534,
 	4534,
+	4534,
+	4534,
+	3199,
+	4534,
+	3632,
+	4534,
+	4534,
 	3632,
 	4534,
 	4534,
-	3632,
 	4534,
 	4534,
 	4534,
 	4534,
 	4534,
 	4534,
-	4534,
-	6554,
-	6661,
-	4534,
-	3632,
-	3188,
-	4534,
-	3604,
-	4534,
-	4356,
-	4436,
-	4534,
-	4436,
+	6558,
+	6665,
 	4534,
 	3632,
 	3188,
@@ -425,15 +430,25 @@ static const int32_t s_InvokerIndices[137] =
 	4436,
 	4534,
 	4436,
-	6641,
-	6661,
+	4534,
+	3632,
+	3188,
+	4534,
+	3604,
+	4534,
+	4356,
+	4436,
+	4534,
+	4436,
+	6645,
+	6665,
 	4534,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	137,
+	142,
 	s_methodPointers,
 	0,
 	NULL,
